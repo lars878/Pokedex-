@@ -1,0 +1,18 @@
+# Node-Module-Ordner (falls du später Node nutzt)
+node_modules/
+
+# Build-Ordner (wenn du später z. B. Vite/Webpack nutzt)
+dist/
+build/
+
+# Mac/Windows generierter Kram
+.DS_Store
+Thumbs.db
+
+# Editor-/IDE-spezifisch
+.vscode/
+.idea/
+
+# Optional: Logs oder temporäre Dateien
+*.log
+*.tmp
