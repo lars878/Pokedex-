@@ -4,13 +4,12 @@ const spinner = document.getElementById("spinner");
 const overlay = document.getElementById("overlay");
 const searchInput = document.getElementById("searchInput");
 
-let allPokemon = []; // Für Suche und Navigation
-let displayedPokemon = []; // ID-Tracking der angezeigten Pokémon
+let allPokemon = []; 
+let displayedPokemon = []; 
 let offset = 0;
 const limit = 20;
 let currentOverlayIndex = 0;
 
-// helper auslagern
 async function fetchAndRender(entry) {
   const details = await (await fetch(entry.url)).json();
   allPokemon.push(details);
@@ -43,14 +42,13 @@ async function loadPokemon() {
   }
 }
 /**
- * Spinner anzeigen/verstecken
+ * Spinner hide/show
  */
 function toggleLoading(show) {
   spinner.classList.toggle("hidden", !show);
 }
-
 /**
- * Overlay öffnen mit Detailinformationen
+ * open Overlay with Pokemon details
  */
 function openOverlay(id) {
   const index = allPokemon.findIndex((p) => p.id === id);
@@ -60,20 +58,18 @@ function openOverlay(id) {
   const selected = allPokemon[index];
   overlay.innerHTML = renderPokemonOverlay(selected);
   overlay.classList.remove("hidden");
-  document.body.style.overflow = "hidden"; // Scrollsperre
+  document.body.style.overflow = "hidden"; 
 }
-
 /**
- * Overlay schließen
+ * close Overlay
  */
 function closeOverlay() {
   overlay.classList.add("hidden");
   overlay.innerHTML = "";
   document.body.style.overflow = "";
 }
-
 /**
- * Zwischen Pokémon im Overlay wechseln
+ * navigates through the overlay
  */
 function navigateOverlay(direction) {
   currentOverlayIndex += direction;
@@ -85,7 +81,7 @@ function navigateOverlay(direction) {
   overlay.innerHTML = renderPokemonOverlay(selected);
 }
 /**
- * Zeigt alle bisher geladenen Pokémon wieder an
+ * shows all Pokemon in the overlay
  */
 function renderAllDisplayedPokemon() {
   const filtered = allPokemon.filter((p) => displayedPokemon.includes(p.id));

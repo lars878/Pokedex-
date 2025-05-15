@@ -22,9 +22,9 @@ function getTypeEmoji(type) {
   return emojis[type] || "❓";
 }
 /**
- * Erstellt die HTML-Struktur für eine kleine Pokémon-Karte
+ * Creates the HTML structure for a small Pokémon card
  * @param {object} pokemon - Pokémon-Daten
- * @returns {string} - HTML-String für Karte
+ * @returns {string} - HTML-String for a Pokémon-card 
  */
 function renderPokemonCard(pokemon) {
   const types = pokemon.types
@@ -36,8 +36,7 @@ function renderPokemonCard(pokemon) {
       )}</span>`;
     })
     .join(" ");
-  // Hier wird die Hintergrundfarbe basierend auf dem ersten Typ gesetzt
-  // und die Typen werden in einer Zeile angezeigt
+
   const bgColor = getTypeColor(pokemon.types[0].type.name);
 
   return `
@@ -49,9 +48,9 @@ function renderPokemonCard(pokemon) {
     `;
 }
 /**
- * Erstellt die HTML-Struktur für die Overlay-Ansicht
- * @param {object} pokemon - Pokémon-Daten
- * @returns {string} - HTML-String für Overlay
+ * Creates the HTML structure for the overlay view
+ * @param {object} pokemon - Pokémon-data
+ * @returns {string} - HTML-String for Overlay
  */
 function renderPokemonOverlay(pokemon) {
   const types = pokemon.types
@@ -66,7 +65,7 @@ function renderPokemonOverlay(pokemon) {
     .map((stat) => {
       const name = capitalize(stat.stat.name);
       const value = stat.base_stat;
-      const percentage = (Math.min(value, 100) / 160) * 100; // Normierung auf max 150
+      const percentage = (Math.min(value, 100) / 160) * 100; 
 
       return `
     <div class="stat-row">
@@ -107,7 +106,7 @@ function renderPokemonOverlay(pokemon) {
 `;
 }
 /**
- * Gibt die Farbe passend zum Typ zurück
+ * Returns the color matching the type
  * @param {string} type - Pokémon-Typ (z.B. fire, grass)
  * @returns {string} - Farbcode
  */
@@ -136,7 +135,7 @@ function getTypeColor(type) {
   return colors[type] || "#F5F5F5";
 }
 /**
- * Kapitalisiert den ersten Buchstaben eines Strings
+ * capitalizes the first Letter of a string
  * @param {string} str
  * @returns {string}
  */

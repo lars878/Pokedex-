@@ -1,4 +1,3 @@
-/* Allgemeines Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -34,7 +33,7 @@ header {
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
 }
 main {
-  padding-top: 13rem; /* genug Platz für den festen Header schaffen */
+  padding-top: 13rem; 
 }
 
 .search-hint {
@@ -81,7 +80,6 @@ h1 {
   padding: 2rem 0;
 }
 
-/* Pokémon-Karte */
 .pokemon-card {
   background-color: #eee;
   border-radius: 12px;
@@ -153,7 +151,6 @@ h1 {
   cursor: not-allowed;
 }
 
-/* Pokéball-Spinner */
 .spinner {
   position: relative;
   width: 60px;
@@ -173,7 +170,6 @@ h1 {
 }
 
 .spinner::before {
-  /* obere Hälfte: Rot */
   top: 0;
   background-color: #ef5350;
   border: 4px solid #333;
@@ -181,14 +177,12 @@ h1 {
 }
 
 .spinner::after {
-  /* untere Hälfte: Weiß */
   bottom: 0;
   background-color: #fff;
   border: 4px solid #333;
   border-top: none;
 }
 
-/* Schwarzer Mittelstreifen */
 .spinner .divider {
   position: absolute;
   top: 50%;
@@ -200,7 +194,6 @@ h1 {
   z-index: 1;
 }
 
-/* Zentraler Knopf */
 .spinner .center {
   position: absolute;
   top: 50%;
@@ -231,7 +224,6 @@ h1 {
   opacity: 0;
 }
 
-/* Overlay */
 .overlay {
   position: fixed;
   top: 0;
@@ -278,7 +270,7 @@ h1 {
 
 .stat-bar-fill {
   height: 100%;
-  background-color: #66bb6a; /* grüner Balken */
+  background-color: #66bb6a; 
   transition: width 0.8s ease;
 }
 
