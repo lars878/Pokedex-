@@ -1,31 +1,37 @@
-
 /**
  * Pokémon nach Name filtern (mindestens 3 Buchstaben)
  */
-searchInput.addEventListener("input", () => {
-  const query = searchInput.value.trim().toLowerCase();
+// Event‑Binding
+searchInput.addEventListener("input", handleSearch);
+
+// Handler ausgelagert
+function handleSearch() {
+  const q = searchInput.value.trim().toLowerCase();
   const hint = document.getElementById("searchHint");
-  const noResults = document.getElementById("noResults");
+  const noRes = document.getElementById("noResults");
 
-  if (query.length < 3) {
-    hint.style.visibility = "visible";
-    noResults.classList.add("hidden");
-    renderAllDisplayedPokemon();
-    return;
-  }
+  if (q.length < 3) return showHint(hint, noRes);
 
-  hint.style.visibility = "hidden";
+  hideElement(hint);
+  const results = allPokemon.filter(p => p.name.includes(q));
+  renderResults(results);
+  toggleNoResults(results.length === 0, noRes);
+}
 
-  const results = allPokemon.filter(p => p.name.includes(query));
-  pokemonContainer.innerHTML = results.map(p => renderPokemonCard(p)).join('');
+// Helfer
+function showHint(hint, noRes) {
+  hint.style.visibility = "visible";
+  noRes.classList.add("hidden");
+  renderAllDisplayedPokemon();
+}
 
-  if (results.length === 0) {
-    noResults.classList.remove("hidden");
-  } else {
-    noResults.classList.add("hidden");
-  }
-});
+function renderResults(list) {
+  pokemonContainer.innerHTML = list.map(renderPokemonCard).join("");
+}
 
+function toggleNoResults(empty, noRes) {
+  noRes.classList[empty ? "remove" : "add"]("hidden");
+}
 /**
  * Klick außerhalb des Overlays schließt es
  */

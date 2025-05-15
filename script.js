@@ -4,36 +4,44 @@ const spinner = document.getElementById("spinner");
 const overlay = document.getElementById("overlay");
 const searchInput = document.getElementById("searchInput");
 
-let allPokemon = [];         // Für Suche und Navigation
-let displayedPokemon = [];   // ID-Tracking der angezeigten Pokémon
+let allPokemon = []; // Für Suche und Navigation
+let displayedPokemon = []; // ID-Tracking der angezeigten Pokémon
 let offset = 0;
 const limit = 20;
 let currentOverlayIndex = 0;
 
+// helper auslagern
+async function fetchAndRender(entry) {
+  const details = await (await fetch(entry.url)).json();
+  allPokemon.push(details);
+  displayedPokemon.push(details.id);
+  pokemonContainer.innerHTML += renderPokemonCard(details);
+}
+
 async function loadPokemon() {
-  toggleLoading(true); // Spinner EIN
+  toggleLoading(true);
   loadMoreBtn.disabled = true;
 
   try {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`);
-    const data = await response.json();
+    const { results } = await (
+      await fetch(
+        `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
+      )
+    ).json();
 
-    for (let entry of data.results) {
-      const details = await fetch(entry.url).then(res => res.json());
-      allPokemon.push(details);
-      displayedPokemon.push(details.id);
-      pokemonContainer.innerHTML += renderPokemonCard(details);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    for (const entry of results) {
+      await fetchAndRender(entry);
     }
-
     offset += limit;
-  } catch (error) {
-    console.error("Fehler beim Laden der Pokémon:", error);
+  } catch (err) {
+    console.error("Fehler beim Laden:", err);
   } finally {
-    toggleLoading(false); // Spinner AUS
+    toggleLoading(false);
     loadMoreBtn.disabled = false;
   }
 }
-
 /**
  * Spinner anzeigen/verstecken
  */
@@ -45,7 +53,7 @@ function toggleLoading(show) {
  * Overlay öffnen mit Detailinformationen
  */
 function openOverlay(id) {
-  const index = allPokemon.findIndex(p => p.id === id);
+  const index = allPokemon.findIndex((p) => p.id === id);
   if (index === -1) return;
   currentOverlayIndex = index;
 
@@ -80,6 +88,8 @@ function navigateOverlay(direction) {
  * Zeigt alle bisher geladenen Pokémon wieder an
  */
 function renderAllDisplayedPokemon() {
-  const filtered = allPokemon.filter(p => displayedPokemon.includes(p.id));
-  pokemonContainer.innerHTML = filtered.map(p => renderPokemonCard(p)).join('');
+  const filtered = allPokemon.filter((p) => displayedPokemon.includes(p.id));
+  pokemonContainer.innerHTML = filtered
+    .map((p) => renderPokemonCard(p))
+    .join("");
 }

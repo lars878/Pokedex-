@@ -1,34 +1,43 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokédex</title>
-  <link rel="icon" type="image/png" href="./assets/poke_trainer.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="./Styles/media.css">
-</head>
-<body>
-  <header>
-    <img src="assets/logo .svg" alt="Pokedex Logo" id="logo" />
-    <h1>Pokédex</h1>
-    <input type="text" id="searchInput" placeholder="Search Pokémon..." minlength="3" />
-    <small id="searchHint" class="search-hint">Please enter at least 3 characters to search.</small>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokédex</title>
+    <link rel="icon" type="image/png" href="./assets/poke_trainer.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./Styles/media.css" />
+  </head>
+  <body>
+    <header>
+      <img src="assets/logo .svg" alt="Pokedex Logo" id="logo" />
+      <h1>Pokédex</h1>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search Pokémon..."
+        minlength="3"/>
+      <small id="searchHint" class="search-hint"
+        >Please enter at least 3 characters to search.</small>
+    </header>
 
-  <main>
-    <section id="pokemonContainer" class="cards-container"></section>
-    <p id="noResults" class="no-results hidden">No Pokémon found.</p>
-    <div id="spinner" class="spinner hidden"></div>
-    <button id="loadMoreBtn">Load More</button>
-  </main>
+    <main>
+      <section id="pokemonContainer" class="cards-container"></section>
+      <p id="noResults" class="no-results hidden">No Pokémon found.</p>
+      <div id="spinner" class="spinner hidden"></div>
+      <div class="divider"></div>
+      <div class="center"></div>
+      <button id="loadMoreBtn">Load More</button>
+    </main>
 
-  <div id="overlay" class="overlay hidden"></div>
+    <div id="overlay" class="overlay hidden"></div>
 
-  <!-- Scripts: Reihenfolge beachten! -->
-<script src="./Scripts/templates.js"></script>
-<script src="script.js"></script>
-  <script src="./Scripts/main.js"></script>
-</body>
+    <!-- Scripts: Reihenfolge beachten! -->
+    <script src="./Scripts/templates.js"></script>
+    <script src="script.js"></script>
+    <script src="./Scripts/main.js"></script>
+  </body>
 </html>
