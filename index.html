@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="./Styles/media.css" />
   </head>
-  <body>
+  <body onload="loadPokemon()">
     <header>
+      <div class="inner"></class>
       <img src="assets/logo .svg" alt="Pokedex Logo" id="logo" />
       <h1>Pokédex</h1>
       <input
@@ -22,6 +23,7 @@
         minlength="3"/>
       <small id="searchHint" class="search-hint"
         >Please enter at least 3 characters to search.</small>
+        </div>
     </header>
 
     <main>
@@ -34,9 +36,11 @@
     </main>
 
     <div id="overlay" class="overlay hidden"></div>
+    <div id="fullSpinnerOverlay" class="full-spinner hidden">
+      <div class="spinner"></div>
+    </div>
 
-    <script src="./Scripts/templates.js"></script>
+    <script src="./scripts/templates.js"></script>
     <script src="script.js"></script>
-    <script src="./Scripts/main.js"></script>
   </body>
 </html>

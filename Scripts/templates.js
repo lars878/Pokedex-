@@ -99,8 +99,8 @@ function renderPokemonOverlay(pokemon) {
     <p><strong>Type:</strong> ${types}</p>
     ${stats}
     <div style="margin-top:1rem;">
-      <button onclick="navigateOverlay(-1)">⬅️ Prev</button>
-      <button onclick="navigateOverlay(1)">Next ➡️</button>
+      <button onclick="navigateOverlay(-1)">\u2B05 </button>
+      <button onclick="navigateOverlay(1)"> \u27A1</button>
     </div>
   </div>
 `;
